@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91617BA11E61072800381770 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91617BA01E61072800381770 /* Task.swift */; };
 		918B06561E60F936009B832A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B06551E60F936009B832A /* AppDelegate.swift */; };
 		918B06581E60F936009B832A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B06571E60F936009B832A /* ViewController.swift */; };
 		918B065B1E60F937009B832A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 918B06591E60F937009B832A /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		91617BA01E61072800381770 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		918B06521E60F936009B832A /* Doit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		918B06551E60F936009B832A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		918B06571E60F936009B832A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				918B06551E60F936009B832A /* AppDelegate.swift */,
 				918B06571E60F936009B832A /* ViewController.swift */,
+				91617BA01E61072800381770 /* Task.swift */,
 				918B06591E60F937009B832A /* Main.storyboard */,
 				918B065F1E60F937009B832A /* Assets.xcassets */,
 				918B06611E60F937009B832A /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91617BA11E61072800381770 /* Task.swift in Sources */,
 				918B06581E60F936009B832A /* ViewController.swift in Sources */,
 				918B06561E60F936009B832A /* AppDelegate.swift in Sources */,
 				918B065E1E60F937009B832A /* Doit.xcdatamodeld in Sources */,
@@ -305,6 +309,7 @@
 				918B06691E60F937009B832A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
