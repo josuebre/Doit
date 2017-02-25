@@ -6,13 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12074.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Do It-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="Doit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="TasksViewController" customModule="Doit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -35,21 +36,26 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Do It" id="IfZ-Ts-1nr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gs6-7V-wpp"/>
+                        <barButtonItem key="backBarButtonItem" title="Pa' Tras" id="bAB-Oq-2CV"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gs6-7V-wpp">
+                            <connections>
+                                <action selector="plusTapped:" destination="BYZ-38-t0r" id="KMP-8Q-iGc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="gtz-tU-NsO" id="P4K-p9-1uH"/>
-                        <segue destination="EhD-ZS-BB3" kind="show" id="z1A-xf-Rec"/>
+                        <segue destination="EhD-ZS-BB3" kind="show" identifier="addSegue" id="z1A-xf-Rec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="946" y="-645"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Task View Controller-->
         <scene sceneID="YS7-2c-AfF">
             <objects>
-                <viewController id="EhD-ZS-BB3" sceneMemberID="viewController">
+                <viewController id="EhD-ZS-BB3" customClass="CreateTaskViewController" customModule="Doit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XkY-1z-6kF"/>
                         <viewControllerLayoutGuide type="bottom" id="ihL-qf-tWS"/>
@@ -57,12 +63,59 @@
                     <view key="view" contentMode="scaleToFill" id="pyc-q3-o6h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IM-iO-9D1">
+                                <rect key="frame" x="163" y="79" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2XE-ws-f5K">
+                                <rect key="frame" x="56" y="110" width="263" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGz-q0-GDO">
+                                <rect key="frame" x="148" y="170" width="80" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vwa-zo-iaT">
+                                <rect key="frame" x="163" y="201" width="51" height="31"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBb-XR-AkA">
+                                <rect key="frame" x="173" y="262" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addTapped:" destination="EhD-ZS-BB3" eventType="touchUpInside" id="mpu-v3-0P6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aBb-XR-AkA" firstAttribute="top" secondItem="vwa-zo-iaT" secondAttribute="bottom" constant="30" id="Am8-qf-DwX"/>
+                            <constraint firstItem="2XE-ws-f5K" firstAttribute="leading" secondItem="pyc-q3-o6h" secondAttribute="leadingMargin" constant="40" id="Gaz-TK-oak"/>
+                            <constraint firstItem="2XE-ws-f5K" firstAttribute="centerX" secondItem="6IM-iO-9D1" secondAttribute="centerX" id="H00-XT-yOM"/>
+                            <constraint firstItem="6IM-iO-9D1" firstAttribute="top" secondItem="XkY-1z-6kF" secondAttribute="bottom" constant="15" id="IvQ-K4-DwY"/>
+                            <constraint firstItem="2XE-ws-f5K" firstAttribute="top" secondItem="6IM-iO-9D1" secondAttribute="bottom" constant="10" id="K5c-8I-WZS"/>
+                            <constraint firstItem="aBb-XR-AkA" firstAttribute="centerX" secondItem="pyc-q3-o6h" secondAttribute="centerX" id="Xgo-uA-VYf"/>
+                            <constraint firstItem="vwa-zo-iaT" firstAttribute="top" secondItem="BGz-q0-GDO" secondAttribute="bottom" constant="10" id="h7z-t8-LhH"/>
+                            <constraint firstItem="BGz-q0-GDO" firstAttribute="centerX" secondItem="pyc-q3-o6h" secondAttribute="centerX" id="mzS-8L-Fjd"/>
+                            <constraint firstItem="6IM-iO-9D1" firstAttribute="centerX" secondItem="pyc-q3-o6h" secondAttribute="centerX" id="q7U-Xr-q33"/>
+                            <constraint firstItem="BGz-q0-GDO" firstAttribute="top" secondItem="2XE-ws-f5K" secondAttribute="bottom" constant="30" id="xbB-Yf-BVu"/>
+                            <constraint firstItem="vwa-zo-iaT" firstAttribute="centerX" secondItem="pyc-q3-o6h" secondAttribute="centerX" id="yEv-Av-OpJ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="importantSwitch" destination="vwa-zo-iaT" id="E8F-1s-CVf"/>
+                        <outlet property="taskNameTextField" destination="2XE-ws-f5K" id="6L8-FO-VKL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="feB-fU-TzO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1758" y="-645"/>
+            <point key="canvasLocation" x="1757.5999999999999" y="-645.42728635682158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7rX-fR-a3o">
